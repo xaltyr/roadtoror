@@ -1,4 +1,3 @@
-
 product_list = {}
 total = {}
 total_sum = {}
