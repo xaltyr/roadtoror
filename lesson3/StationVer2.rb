@@ -46,6 +46,10 @@ class Train
   def stop
     @speed = 0
   end
+  
+  def go(speed)
+    @speed = speed
+  end
 
   def attach_wagon
     if @speed == 0
