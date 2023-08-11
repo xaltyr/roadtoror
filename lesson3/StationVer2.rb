@@ -1,14 +1,6 @@
 class Station
   attr_reader :trains, :name
 
-  def name
-    @name
-  end
-
-  def trains
-    @trains
-  end
-
   def initialize(name)
     @name = name
     @trains = []
@@ -30,10 +22,6 @@ end
 class Route
   attr_reader :stations
 
-  def stations
-    @stations
-  end
-
   def initialize(start, finish)
     @stations = [start, finish]
   end
@@ -45,7 +33,6 @@ class Route
   def delete_station(station)
     stations.delete(station)
   end
-
 end
 
 class Train
