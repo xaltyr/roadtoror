@@ -13,25 +13,14 @@ class Train
     @speed
   end
 
-  # данные методы будут описаны в интерфейсе и незачем пользователю
-
-  private
-
-  def attach_wagon!(wagon)
-    wagons << wagon
-  end
-
   def attach_wagon
-    if @speed == 0
-      if self.type == "Грузовой"
-        cargo_wagon = CargoWagon.new
-        attach_wagon!(cargo_wagon)
-      elsif self.type == "Пассажирский"
-        passenger_wagon = PassengerWagon.new
-        attach_wagon!(passenger_wagon)
-      else
-        "Поезд на ходу!"
-      end
+    return "Поезд на ходу!" if @speed == 0
+    if self.type == "Грузовой"
+      cargo_wagon = CargoWagon.new
+      attach_wagon!(cargo_wagon)
+    elsif self.type == "Пассажирский"
+      passenger_wagon = PassengerWagon.new
+      attach_wagon!(passenger_wagon)
     end
   end
 
@@ -42,12 +31,18 @@ class Train
   def accept_route(route)
     @route = route
     @current_station_index = 0
-    @train_route = @route.stations.first
+    station = @route.stations[@current_station_index]
+    station.accept_train(self)
   end
-  public
+
   def go_next_station
     if current_station != @route.stations.last
       @current_station_index += 1
+      station = @route.stations[@current_station_index]
+      station.accept_train(self)
+      previous_station = @route.stations[@current_station_index - 1]
+      previous_station.send_train(self)
+
     else
       puts "Поезд на конечной станции"
     end
@@ -56,10 +51,14 @@ class Train
   def go_previous_station
     if current_station != @route.stations.first
       @current_station_index -= 1
+      station = @route.stations[@current_station_index]
+      station.accept_train(self)
+      previous_station = @route.stations[@current_station_index + 1]
+      previous_station.send_train(self)
+
     else
       puts "Поезд на начальной станции"
     end
-
   end
 
   def current_station
@@ -74,4 +73,12 @@ class Train
     @route.stations[@current_station_index - 1]
   end
 
+  # Вспомогательный метод
+
+  private
+
+  def attach_wagon!(wagon)
+    wagons << wagon
+
+  end
 end

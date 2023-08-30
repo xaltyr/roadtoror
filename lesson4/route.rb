@@ -1,9 +1,9 @@
-# encoding: utf-8
 class Route
-  attr_reader :stations
+  attr_reader :stations, :route_number
 
-  def initialize(start, finish)
-    @stations = [start,finish]
+  def initialize(start, finish, route_number)
+    @stations = [start, finish]
+    @route_number = route_number
   end
 
   def add_station(station)
@@ -13,5 +13,4 @@ class Route
   def delete_station(station)
     stations.delete(station)
   end
-
 end
