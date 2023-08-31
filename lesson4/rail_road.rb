@@ -175,11 +175,7 @@ class RailRoad
 
     puts "#{station.trains}"
   end
-
-  def exit_menu
-    break
-  end
-
+  
   def find_station(name)
     @stations.find { |station| station.name == name }
   end
