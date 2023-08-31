@@ -14,7 +14,6 @@ SELECT_ACTION = "Выберите действие
             3 - Создать маршрут(Если уже созданы 2 станции)"
 
 ACTION_MAPPING = {
-  0 => :exit_menu,
   1 => :create_obj,
   2 => :route_action,
   3 => :route_accept,
