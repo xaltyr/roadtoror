@@ -11,11 +11,9 @@ class RailRoad
 
   def menu
     loop do
-
     puts MENU
-
     choose = gets.chomp.to_i
-
+    break if choose == 0
     send(ACTION_MAPPING[choose])
     end
   end
