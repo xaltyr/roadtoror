@@ -13,8 +13,8 @@ module InstanceCounter
 
     private
 
-    def increase_instances=(val)
-      @instances = val
+    def instance=(val)
+      @instance = val
     end
   end
 
