@@ -19,7 +19,9 @@ module InstanceCounter
   end
 
   module InstanceMethods
-
+    
+  private
+    
     def register_instance
       self.class.send(:increase_instances=, self.class.instances + 1)
     end
