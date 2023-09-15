@@ -14,7 +14,6 @@ class Train
     @number = number
     @wagons = []
     @speed = 0
-    @@all_instances << self
     register_instance
     begin
       validate!
@@ -27,7 +26,7 @@ class Train
       retry if number !~ REGEXP
     end
   end
-
+    @@all_instances << self
   def stop
     @speed = 0
   end
