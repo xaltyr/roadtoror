@@ -24,9 +24,10 @@ class Train
       number = gets.chomp
       puts "Создан поезд #{self.number}"
       retry if number !~ REGEXP
-    end
-  end
+    end 
     @@all_instances << self
+  end
+  
   def stop
     @speed = 0
   end
