@@ -176,17 +176,17 @@ class RailRoad
     station.each_train {|train| puts "Номер: #{train.number},Количество вагонов: #{train.wagons.length},Тип: #{train.type}"}
   end
 
-  def wagon_list
+def wagon_list
     puts "Введите номер поезда"
     number = gets.chomp
 
     train = self.find_train(number)
     train.each_wagon do |wagon|
       if wagon.wagon_type == :Cargo
-        puts "Номер вагона: #{wagon.number}, Тип вагона #{wagon.wagon_type}, Свободный объем: #{wagon.free_volume}, Занятый объем:#{wagon.occupied_volume}"
+        puts "Номер вагона: #{wagon.number}, Тип вагона #{wagon.wagon_type}, Свободный объем: #{wagon.free_place} м^2, Занятый объем:#{wagon.used_place} м^2"
 
       elsif wagon.wagon_type == :Passenger
-        puts "Номер вагона: #{wagon.number}, Тип вагона #{wagon.wagon_type}, Свободные места: #{wagon.free_seats}, Занятые места: #{wagon.occupied_seats}"
+        puts "Номер вагона: #{wagon.number}, Тип вагона #{wagon.wagon_type}, Свободные места: #{wagon.free_place} мест, Занятые места: #{wagon.used_place} мест"
       end
     end
   end
