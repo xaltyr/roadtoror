@@ -1,22 +1,11 @@
 class CargoWagon < Wagon
-  attr_reader :free_volume
 
   def initialize(volume, number)
-    @volume = volume
-    @free_volume = volume
-    super(:Cargo, number)
+    super(:Cargo, number, volume)
   end
 
   def take_volume(vol)
-    if @free_volume - vol < 0
-      raise "Весь объем занят"
-    else
-      @free_volume -= vol
+    raise "Весь объем занят" if @free_place - vol < 0
+    @used_place += vol
     end
   end
-
-  def occupied_volume
-    occupied_volume = @volume - @free_volume
-    occupied_volume
-  end
-end
