@@ -1,22 +1,11 @@
 class PassengerWagon < Wagon
-  attr_reader :free_seats, :number
 
   def initialize(seats,number)
-    @seats = seats
-    @free_seats = seats
-    super(:Passenger,number)
+    super(:Passenger,number, seats)
   end
 
   def take_seat
-    if @free_seats - 1 < 0
-      raise "Места заняты"
-    else
-      @free_seats -= 1
+    raise "Места заняты" if @free_place - 1 < 0
+    @used_place += 1
     end
   end
-
-  def occupied_seats
-    occupied_seats = @seats - free_seats
-    occupied_seats
-  end
-end
