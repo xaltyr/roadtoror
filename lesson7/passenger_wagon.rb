@@ -7,5 +7,5 @@ class PassengerWagon < Wagon
   def take_seat
     raise "Места заняты" if @free_place - 1 < 0
     @used_place += 1
-    end
   end
+end
