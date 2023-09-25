@@ -176,7 +176,7 @@ class RailRoad
     station.each_train {|train| puts "Номер: #{train.number},Количество вагонов: #{train.wagons.length},Тип: #{train.type}"}
   end
 
-def wagon_list
+  def wagon_list
     puts "Введите номер поезда"
     number = gets.chomp
 
