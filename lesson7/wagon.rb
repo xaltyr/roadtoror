@@ -14,5 +14,5 @@ class Wagon
 
   def free_place
     @total_place - @used_place
-    end
   end
+end
