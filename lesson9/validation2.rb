@@ -23,12 +23,18 @@ module Validation
         send("validate_#{type}", attribute_value, *options)
       end
     end
+    
+    def valid?
+      validate!
+      true
+    rescue StandardError
+      false
+    end
 
     private
 
     def validate_format(attribute_value, expected_format)
-      format = Regexp.new(expected_format)
-      raise "Неверный формат" if attribute_value !~ format
+      raise "Неверный формат" if attribute_value !~ expected_format
     end
 
     def validate_presence(attribute_value)
